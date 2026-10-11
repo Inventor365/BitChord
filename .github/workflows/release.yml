@@ -8,10 +8,6 @@ on:
         description: "Version to stamp into the packages, without the leading v"
         required: true
         default: "1.8.1"
-      target:
-        description: "Platform to build: all, macos, macos-x64, macos-arm64, linux, windows"
-        required: false
-        default: "all"
       draft:
         description: "Create as draft (false publishes immediately)"
         type: boolean
@@ -28,7 +24,6 @@ concurrency:
 jobs:
   linux:
     name: Linux · AppImage, deb, rpm
-    if: github.ref_type == 'tag' || inputs.target == 'all' || inputs.target == 'linux' || inputs.target == ''
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -100,7 +95,6 @@ jobs:
 
   windows:
     name: Windows · installer, msi, portable
-    if: github.ref_type == 'tag' || inputs.target == 'all' || inputs.target == 'windows' || inputs.target == ''
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -173,7 +167,6 @@ jobs:
 
   macos:
     name: macOS · dmg, pkg, zip (${{ matrix.arch }})
-    if: github.ref_type == 'tag' || inputs.target == 'all' || inputs.target == 'macos' || inputs.target == format('macos-{0}', matrix.arch) || inputs.target == ''
     strategy:
       fail-fast: false
       matrix:
@@ -243,7 +236,6 @@ jobs:
 
   release:
     name: Publish
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure')
     needs: [linux, windows, macos]
     runs-on: ubuntu-latest
     steps:
