@@ -1,12 +1,22 @@
 name: Release
 on:
   push:
-    tags: ["v*.*.*"]
+    tags: ["v*"]
   workflow_dispatch:
     inputs:
       version:
         description: "Version to stamp into the packages, without the leading v"
         required: true
+        default: "1.8.1"
+      target:
+        description: "Platform to build: all, macos, macos-x64, macos-arm64, linux, windows"
+        required: false
+        default: "all"
+      draft:
+        description: "Create as draft (false publishes immediately)"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -18,6 +28,7 @@ concurrency:
 jobs:
   linux:
     name: Linux · AppImage, deb, rpm
+    if: github.ref_type == 'tag' || inputs.target == 'all' || inputs.target == 'linux' || inputs.target == ''
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -89,6 +100,7 @@ jobs:
 
   windows:
     name: Windows · installer, msi, portable
+    if: github.ref_type == 'tag' || inputs.target == 'all' || inputs.target == 'windows' || inputs.target == ''
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -161,7 +173,9 @@ jobs:
 
   macos:
     name: macOS · dmg, pkg, zip (${{ matrix.arch }})
+    if: github.ref_type == 'tag' || inputs.target == 'all' || inputs.target == 'macos' || inputs.target == format('macos-{0}', matrix.arch) || inputs.target == ''
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: macos-14
@@ -229,6 +243,7 @@ jobs:
 
   release:
     name: Publish
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure')
     needs: [linux, windows, macos]
     runs-on: ubuntu-latest
     steps:
@@ -240,13 +255,13 @@ jobs:
 
       - run: ls -lh dist
 
-      - name: Draft the release
-        if: github.ref_type == 'tag'
+      - name: Publish the release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          name: BitChord ${{ github.ref_name }}
-          draft: true
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || format('v{0}', inputs.version) }}
+          name: BitChord ${{ github.ref_type == 'tag' && github.ref_name || format('v{0}', inputs.version) }}
+          draft: ${{ github.event_name == 'workflow_dispatch' && inputs.draft || false }}
+          prerelease: false
           files: dist/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
