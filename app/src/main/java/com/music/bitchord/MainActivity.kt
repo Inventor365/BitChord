@@ -155,6 +155,7 @@ import com.music.bitchord.data.settings.AppSettings
 import com.music.bitchord.data.settings.LibrarySort
 import com.music.bitchord.data.settings.ThemeMode
 import com.music.bitchord.ui.components.AccountProfileSelector
+import com.music.bitchord.ui.components.ExplicitBlockedAlert
 import com.music.bitchord.ui.navigation.AppDestination
 import com.music.bitchord.ui.navigation.AppRoute
 import com.music.bitchord.ui.components.SpotifyImportAlert
@@ -233,6 +234,7 @@ import com.music.bitchord.playback.QualityUpgrade
 import com.music.bitchord.playback.rememberMediaController
 import com.music.bitchord.playback.rememberPlayerState
 import com.music.bitchord.playback.setQueueDragActive
+import com.music.bitchord.ui.AndroidAppUiHost
 import com.music.bitchord.ui.MainViewModel
 import com.music.bitchord.ui.SearchSource
 import com.music.bitchord.ui.components.BottomFadeScrim
@@ -1884,6 +1886,7 @@ private fun BitChordApp(
                 title = item.title,
                 artist = InnertubeParser.artistFromSubtitle(item.subtitle),
                 thumbnailUrl = item.thumbnailUrl,
+                isExplicit = item.isExplicit,
             )
         }
     }
@@ -4204,6 +4207,8 @@ private fun BitChordApp(
                 value = song.localUri == null &&
                     withContext(Dispatchers.IO) { AudioCache.holds(song.videoId) }
             }
+            val blockExplicit by AppSettings.blockExplicit.collectAsStateWithLifecycle()
+            val explicitAllowed by AppSettings.explicitAllowed.collectAsStateWithLifecycle()
             SongActionsSheet(
                 song = song,
                 presentation = presentation,
@@ -4212,6 +4217,12 @@ private fun BitChordApp(
                 onPlayNext = { playNext(song); songActions = null },
                 onAddToQueue = { addToQueue(song); songActions = null },
                 onStartRadio = { startRadio(song); songActions = null },
+                onToggleExplicitAllowed = if (blockExplicit && song.isExplicit == true) {
+                    { AppSettings.setExplicitAllowed(song.videoId, song.videoId !in explicitAllowed) }
+                } else {
+                    null
+                },
+                explicitAllowed = song.videoId in explicitAllowed,
                 // Stays open: the row it replaces itself with is the
                 // progress, and closing the sheet would hide the only
                 // answer to "did that work?".
@@ -5300,6 +5311,23 @@ private fun BitChordApp(
                     confirmJioSaavn = false
                 },
                 onDismiss = { confirmJioSaavn = false },
+            )
+        }
+
+        // A blocked explicit song tapped in a list; see [ExplicitPrompt].
+        val explicitPrompt by AndroidAppUiHost.explicitPrompt.collectAsStateWithLifecycle()
+        explicitPrompt?.let { prompt ->
+            val answer = { change: () -> Unit ->
+                change()
+                AndroidAppUiHost.explicitPrompt.value = null
+                prompt.play()
+            }
+            ExplicitBlockedAlert(
+                hazeState = hazeState,
+                title = prompt.title,
+                onAllow = { answer { AppSettings.setExplicitAllowed(prompt.videoId, true) } },
+                onTurnOffBlocking = { answer { AppSettings.setBlockExplicit(false) } },
+                onDismiss = { AndroidAppUiHost.explicitPrompt.value = null },
             )
         }
 

@@ -70,7 +70,12 @@ internal object DesktopAutoplay {
         }
         val related = DesktopSearchClient.radio(seed).getOrElse { return Result.failure(it) }
         DesktopTrackLog.log("autoplay: station for '${seedSong.title}' offered ${related.size} tracks")
-        val extra = QueueBuilder.extend(existing, related, limit)
+        val permitted = com.music.bitchord.playback.ExplicitFilter.filter(
+            related,
+            DesktopAppUiHost.blockExplicit.value,
+            DesktopAppUiHost.explicitAllowed.value,
+        )
+        val extra = QueueBuilder.extend(existing, permitted, limit)
         if (extra.isEmpty()) return Result.success(emptyList())
         return Result.success(extra.map { it.copy(queueTier = QueueTier.AUTOPLAY, radioName = seedSong.radioName) })
     }

@@ -45,6 +45,7 @@ import com.music.bitchord.data.model.SearchHistoryEntity
 import com.music.bitchord.data.settings.LibrarySort
 import com.music.bitchord.data.settings.LibraryViewType
 import com.music.bitchord.ui.AppUiHost
+import com.music.bitchord.ui.components.ExplicitPrompt
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.builtins.ListSerializer
@@ -89,6 +90,34 @@ internal object DesktopAppUiHost : AppUiHost {
         _librarySort.value = value
     }
 
+    private val _blockExplicit = MutableStateFlow(persistence.boolean(KEY_BLOCK_EXPLICIT, false))
+    override val blockExplicit: StateFlow<Boolean> = _blockExplicit
+
+    fun setBlockExplicit(value: Boolean) {
+        persistence.saveString(KEY_BLOCK_EXPLICIT, value.toString())
+        _blockExplicit.value = value
+    }
+
+    private val _explicitAllowed = MutableStateFlow(
+        persistence.string(KEY_EXPLICIT_ALLOWED, "")
+            .split(",")
+            .map(String::trim)
+            .filter(String::isNotEmpty)
+            .toSet(),
+    )
+    override val explicitAllowed: StateFlow<Set<String>> = _explicitAllowed
+
+    fun setExplicitAllowed(videoId: String, allowed: Boolean) {
+        val next = if (allowed) _explicitAllowed.value + videoId else _explicitAllowed.value - videoId
+        _explicitAllowed.value = next
+        persistence.saveString(KEY_EXPLICIT_ALLOWED, next.joinToString(","))
+    }
+
+    val explicitPrompt = MutableStateFlow<ExplicitPrompt?>(null)
+    override fun askExplicitBlocked(prompt: ExplicitPrompt) {
+        explicitPrompt.value = prompt
+    }
+
     /** Kept current by the app, which owns the download list — see `BitChordDesktopApp`. */
     val downloaded = MutableStateFlow<Set<String>>(emptySet())
 
@@ -100,6 +129,8 @@ internal object DesktopAppUiHost : AppUiHost {
 
     private const val KEY_SWIPE_PLAY_NEXT = "swipe_play_next"
     private const val KEY_HOME_RECENTS_VIEW = "home_recents_view"
+    private const val KEY_BLOCK_EXPLICIT = "block_explicit"
+    private const val KEY_EXPLICIT_ALLOWED = "explicit_allowed"
 }
 
 /**

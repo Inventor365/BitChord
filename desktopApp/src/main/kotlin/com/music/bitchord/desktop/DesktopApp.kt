@@ -4357,6 +4357,49 @@ fun BitChordDesktopApp() {
                             menu = { song -> songMenu(song) },
                         )
                     }
+                    val explicitPrompt by DesktopAppUiHost.explicitPrompt.collectAsState()
+                    explicitPrompt?.let { prompt ->
+                        AlertDialog(
+                            onDismissRequest = { DesktopAppUiHost.explicitPrompt.value = null },
+                            title = { Text(DesktopStrings["explicit_song_blocked", "Explicit song"]) },
+                            text = {
+                                Text(
+                                    DesktopStrings.format(
+                                        "explicit_song_blocked_message",
+                                        prompt.title,
+                                        fallback = "\u201c%1\$s\u201d is marked explicit and your filter is blocking it.",
+                                    ),
+                                )
+                            },
+                            confirmButton = {
+                                TextButton(
+                                    onClick = {
+                                        DesktopAppUiHost.setExplicitAllowed(prompt.videoId, true)
+                                        DesktopAppUiHost.explicitPrompt.value = null
+                                        prompt.play()
+                                    },
+                                ) {
+                                    Text(DesktopStrings["allow_this_song", "Allow this song"])
+                                }
+                            },
+                            dismissButton = {
+                                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                    TextButton(
+                                        onClick = {
+                                            DesktopAppUiHost.setBlockExplicit(false)
+                                            DesktopAppUiHost.explicitPrompt.value = null
+                                            prompt.play()
+                                        },
+                                    ) {
+                                        Text(DesktopStrings["turn_off_blocking", "Turn off blocking"])
+                                    }
+                                    TextButton(onClick = { DesktopAppUiHost.explicitPrompt.value = null }) {
+                                        Text(DesktopStrings["cancel", "Cancel"])
+                                    }
+                                }
+                            },
+                        )
+                    }
                 }
                 }
                 }
@@ -6422,6 +6465,13 @@ private fun DesktopSettingsScreen(
                         DesktopStrings["d_autoplay_wont_suggest_a_song_already_played_or_suggested", "AutoPlay won\u2019t suggest a song already played or suggested this session"],
                         dontRepeatSuggestions,
                         onDontRepeatSuggestionsChange,
+                    )
+                    val blockExplicit by DesktopAppUiHost.blockExplicit.collectAsState()
+                    SettingsToggle(
+                        DesktopStrings["block_explicit", "Block explicit songs"],
+                        DesktopStrings["block_explicit_subtitle", "Skip songs marked explicit in AutoPlay, radio and your queue. Allow one from its menu"],
+                        blockExplicit,
+                        DesktopAppUiHost::setBlockExplicit,
                     )
                     SettingsToggle(
                         DesktopStrings["d_tray_icon", "Tray icon"],
