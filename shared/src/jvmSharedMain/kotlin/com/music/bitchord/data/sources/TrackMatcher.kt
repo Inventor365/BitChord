@@ -546,7 +546,7 @@ object TrackMatcher {
      * `(title)`. CJK letters themselves survive — stripping them is what kept
      * every non-Latin catalogue out of matching entirely.
      */
-    private val CAMEL_CASE = Regex("""(\p{Ll})(\p{Lu})""")
+    private val CAMEL_CASE = Regex("""(\p{Ll})(\p{Lu}\p{Ll})""")
 
     internal fun normalize(text: String): String =
         Normalizer.normalize(text, Normalizer.Form.NFKC)

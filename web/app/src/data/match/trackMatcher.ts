@@ -119,7 +119,7 @@ const sameSet = <T>(a: Set<T>, b: Set<T>) => a.size === b.size && [...a].every((
 const union = <T>(...sets: Iterable<T>[]) => new Set(sets.flatMap((s) => [...s]));
 const intersect = <T>(a: Set<T>, b: Set<T>) => new Set([...a].filter((x) => b.has(x)));
 
-const CAMEL_CASE = /([\p{Ll}])([\p{Lu}])/gu;
+const CAMEL_CASE = /([\p{Ll}])([\p{Lu}][\p{Ll}])/gu;
 
 export function normalize(text: string): string {
   return text
