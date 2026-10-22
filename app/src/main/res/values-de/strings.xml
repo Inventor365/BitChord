@@ -1389,4 +1389,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">Neue Playlist-Songs automatisch herunterladen</string>
+    <string name="show_nav_labels">Tab-Beschriftungen anzeigen</string>
+    <string name="show_nav_labels_subtitle">Namen unter den Symbolen in der unteren Leiste. Aus hält die Leiste schmaler</string>
+    <string name="song_cache_disabled">Deaktiviert</string>
+    <string name="song_cache_disabled_subtitle">Zwischenspeicherung ist deaktiviert — Songs werden jedes Mal gestreamt statt gespeichert.</string>
 </resources>

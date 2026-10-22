@@ -1429,4 +1429,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">Automatycznie pobieraj nowe utwory z playlisty</string>
+    <string name="show_nav_labels">Pokaż etykiety kart</string>
+    <string name="show_nav_labels_subtitle">Nazwy pod ikonami na dolnym pasku. Wyłączenie zmniejsza pasek</string>
+    <string name="song_cache_disabled">Wyłączone</string>
+    <string name="song_cache_disabled_subtitle">Pamięć podręczna jest wyłączona — utwory będą za każdym razem przesyłane strumieniowo.</string>
 </resources>

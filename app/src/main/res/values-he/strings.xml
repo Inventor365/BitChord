@@ -1394,4 +1394,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">הורדה אוטומטית של שירים חדשים בפלייליסט</string>
+    <string name="show_nav_labels">הצגת תוויות כרטיסיות</string>
+    <string name="show_nav_labels_subtitle">שמות מתחת לסמלים בסרגל התחתון. כיבוי שומר על סרגל דק יותר</string>
+    <string name="song_cache_disabled">מושבת</string>
+    <string name="song_cache_disabled_subtitle">המטמון כבוי — שירים יוזרמו בכל פעם במקום להישמר במכשיר.</string>
 </resources>

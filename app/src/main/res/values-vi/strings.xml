@@ -1306,4 +1306,9 @@
     <string name="debrid_connected">Đã kết nối</string>
     <string name="debrid_rejected">Khóa này đã bị từ chối</string>
     <string name="debrid_clear_key">Xóa khóa</string>
+    <string name="auto_download_playlists">Tự động tải bài hát mới trong danh sách phát</string>
+    <string name="show_nav_labels">Hiển thị nhãn tab</string>
+    <string name="show_nav_labels_subtitle">Tên bên dưới biểu tượng ở thanh dưới cùng. Tắt để thanh gọn hơn</string>
+    <string name="song_cache_disabled">Đã tắt</string>
+    <string name="song_cache_disabled_subtitle">Bộ nhớ đệm đã tắt — bài hát sẽ phát trực tuyến mỗi lần thay vì lưu trên bộ nhớ.</string>
 </resources>

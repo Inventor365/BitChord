@@ -1390,4 +1390,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">Télécharger automatiquement les nouveaux titres des playlists</string>
+    <string name="show_nav_labels">Afficher les libellés des onglets</string>
+    <string name="show_nav_labels_subtitle">Noms sous les icônes de la barre inférieure. Désactivé rend la barre plus fine</string>
+    <string name="song_cache_disabled">Désactivé</string>
+    <string name="song_cache_disabled_subtitle">Le cache est désactivé — les titres seront diffusés en continu à chaque écoute.</string>
 </resources>

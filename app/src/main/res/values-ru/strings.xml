@@ -1421,4 +1421,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">Автозагрузка новых песен плейлиста</string>
+    <string name="show_nav_labels">Показывать подписи вкладок</string>
+    <string name="show_nav_labels_subtitle">Названия под значками на нижней панели. При отключении панель становится компактнее</string>
+    <string name="song_cache_disabled">Отключено</string>
+    <string name="song_cache_disabled_subtitle">Кэширование отключено — песни будут передаваться потоково каждый раз.</string>
 </resources>

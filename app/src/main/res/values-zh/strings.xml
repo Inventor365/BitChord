@@ -1366,4 +1366,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">自动下载播放列表中的新歌曲</string>
+    <string name="show_nav_labels">显示标签页名称</string>
+    <string name="show_nav_labels_subtitle">在底部栏图标下方显示名称。关闭可使底部栏更精简</string>
+    <string name="song_cache_disabled">已禁用</string>
+    <string name="song_cache_disabled_subtitle">缓存已关闭 — 歌曲每次都会在线播放，而不会存储在磁盘上。</string>
 </resources>

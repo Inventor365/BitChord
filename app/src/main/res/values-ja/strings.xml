@@ -1367,4 +1367,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">プレイリストの新しい曲を自動ダウンロード</string>
+    <string name="show_nav_labels">タブのラベルを表示</string>
+    <string name="show_nav_labels_subtitle">下部バーのアイコンの下に名前を表示します。オフにするとバーがスリムになります</string>
+    <string name="song_cache_disabled">無効</string>
+    <string name="song_cache_disabled_subtitle">キャッシュはオフです — 曲はディスクに保存されず毎回ストリーミングされます。</string>
 </resources>

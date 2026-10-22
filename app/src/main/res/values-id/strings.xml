@@ -1366,4 +1366,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">Unduh otomatis lagu playlist baru</string>
+    <string name="show_nav_labels">Tampilkan label tab</string>
+    <string name="show_nav_labels_subtitle">Nama di bawah ikon pada bilah bawah. Nonaktif membuat bilah lebih ramping</string>
+    <string name="song_cache_disabled">Dinonaktifkan</string>
+    <string name="song_cache_disabled_subtitle">Cache dinonaktifkan — lagu akan di-streaming setiap kali diputar.</string>
 </resources>

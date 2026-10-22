@@ -1346,4 +1346,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">Yeni çalma listesi şarkılarını otomatik indir</string>
+    <string name="show_nav_labels">Sekme etiketlerini göster</string>
+    <string name="show_nav_labels_subtitle">Alt çubuktaki simgelerin altında adlar. Kapatmak çubuğu daha ince tutar</string>
+    <string name="song_cache_disabled">Devre dışı</string>
+    <string name="song_cache_disabled_subtitle">Önbellekleme kapalı — şarkılar diske kaydedilmek yerine her seferinde akışla çalınır.</string>
 </resources>

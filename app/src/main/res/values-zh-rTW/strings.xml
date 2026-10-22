@@ -1366,4 +1366,9 @@
 <string name="debrid_key_hint">Paste your Debrid API key</string>
 <string name="debrid_key_note">Find it on your debrid provider’s settings page. Stored encrypted on this device, never uploaded anywhere else.</string>
 <string name="debrid_rejected">That key was rejected</string>
+    <string name="auto_download_playlists">自動下載播放清單中的新歌曲</string>
+    <string name="show_nav_labels">顯示分頁標籤名稱</string>
+    <string name="show_nav_labels_subtitle">在底部列圖示下方顯示名稱。關閉可讓底部列更精簡</string>
+    <string name="song_cache_disabled">已停用</string>
+    <string name="song_cache_disabled_subtitle">快取已關閉 — 歌曲每次都會串流播放，而不會儲存在磁碟上。</string>
 </resources>

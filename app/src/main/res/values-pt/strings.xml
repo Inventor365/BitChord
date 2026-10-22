@@ -1395,4 +1395,8 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="show_nav_labels">Mostrar rótulos das abas</string>
+    <string name="show_nav_labels_subtitle">Nomes abaixo dos ícones na barra inferior. Desativado mantém a barra mais fina</string>
+    <string name="song_cache_disabled">Desativado</string>
+    <string name="song_cache_disabled_subtitle">O cache está desativado — as músicas serão transmitidas todas as vezes em vez de salvas no disco.</string>
 </resources>

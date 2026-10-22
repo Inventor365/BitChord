@@ -1361,4 +1361,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">Descargar automáticamente nuevas canciones de la lista</string>
+    <string name="show_nav_labels">Mostrar etiquetas de pestañas</string>
+    <string name="show_nav_labels_subtitle">Nombres debajo de los iconos en la barra inferior. Desactivado mantiene la barra más delgada</string>
+    <string name="song_cache_disabled">Desactivado</string>
+    <string name="song_cache_disabled_subtitle">El almacenamiento en caché está desactivado: las canciones se transmitirán cada vez.</string>
 </resources>

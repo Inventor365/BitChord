@@ -1389,4 +1389,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">प्लेलिस्ट के नए गाने अपने-आप डाउनलोड करें</string>
+    <string name="show_nav_labels">टैब लेबल दिखाएं</string>
+    <string name="show_nav_labels_subtitle">नीचे की बार में आइकन के नीचे नाम। बंद करने पर बार पतली रहती है</string>
+    <string name="song_cache_disabled">बंद</string>
+    <string name="song_cache_disabled_subtitle">कैशिंग बंद है — गाने डिस्क पर सहेजे जाने के बजाय हर बार स्ट्रीम होंगे।</string>
 </resources>

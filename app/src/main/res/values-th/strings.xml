@@ -1372,4 +1372,9 @@
     <string name="debrid_connected">Connected</string>
     <string name="debrid_rejected">That key was rejected</string>
     <string name="debrid_clear_key">Clear key</string>
+    <string name="auto_download_playlists">ดาวน์โหลดเพลงใหม่ในเพลย์ลิสต์อัตโนมัติ</string>
+    <string name="show_nav_labels">แสดงป้ายกำกับแท็บ</string>
+    <string name="show_nav_labels_subtitle">ชื่อใต้ไอคอนในแถบด้านล่าง ปิดเพื่อให้แถบบางลง</string>
+    <string name="song_cache_disabled">ปิดใช้งาน</string>
+    <string name="song_cache_disabled_subtitle">ปิดการแคชแล้ว — เพลงจะสตรีมใหม่ทุกครั้งแทนการจัดเก็บลงดิสก์</string>
 </resources>
