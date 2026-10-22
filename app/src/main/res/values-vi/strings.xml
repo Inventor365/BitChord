@@ -1297,4 +1297,13 @@
     <string name="song_info_unavailable">Không có thông tin</string>
     <string name="song_info_error">Không thể tải một số thông tin.</string>
     <string name="song_info_retry">Thử lại</string>
+    <string name="debrid_editor_title">Debrid</string>
+    <string name="debrid_editor_subtitle">Âm thanh gốc từ bộ nhớ đệm qua tài khoản debrid của bạn</string>
+    <string name="debrid_api_key">Khóa API debrid</string>
+    <string name="debrid_api_key_required">Cần có khóa API debrid</string>
+    <string name="debrid_key_hint">Dán khóa API debrid của bạn</string>
+    <string name="debrid_key_note">Lấy khóa trong trang cài đặt của nhà cung cấp debrid. Khóa được lưu mã hóa trên thiết bị, không gửi đi đâu khác.</string>
+    <string name="debrid_connected">Đã kết nối</string>
+    <string name="debrid_rejected">Khóa này đã bị từ chối</string>
+    <string name="debrid_clear_key">Xóa khóa</string>
 </resources>

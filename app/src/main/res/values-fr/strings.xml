@@ -1381,4 +1381,13 @@
     <string name="song_info_unavailable">Non disponible</string>
     <string name="song_info_error">Certaines informations n’ont pas pu être chargées.</string>
     <string name="song_info_retry">Réessayer</string>
+    <string name="debrid_editor_title">Debrid</string>
+    <string name="debrid_editor_subtitle">Bit-exact cached audio via your debrid account</string>
+    <string name="debrid_api_key">Debrid API key</string>
+    <string name="debrid_api_key_required">Debrid API key required</string>
+    <string name="debrid_key_hint">Paste your Debrid API key</string>
+    <string name="debrid_key_note">Find it on your debrid provider’s settings page. Stored encrypted on this device, never uploaded anywhere else.</string>
+    <string name="debrid_connected">Connected</string>
+    <string name="debrid_rejected">That key was rejected</string>
+    <string name="debrid_clear_key">Clear key</string>
 </resources>
