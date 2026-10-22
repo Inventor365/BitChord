@@ -466,8 +466,14 @@ internal fun DesktopSongMenu(
             }
         }
 
-        val albumId = song.albumId
-        val artistId = song.artistId
+        val needsLinks = !isOffline && song.videoId.isNotBlank() &&
+            (song.albumId == null || song.artistId == null) &&
+            (onOpenAlbum != null || onOpenArtist != null)
+        val extraLinks by produceState<Song?>(null, song.videoId, needsLinks) {
+            value = if (needsLinks) com.music.bitchord.data.YtMusicRepository.trackLinks(song.videoId).getOrNull() else null
+        }
+        val albumId = song.albumId ?: extraLinks?.albumId
+        val artistId = song.artistId ?: extraLinks?.artistId
         DesktopMenuDivider()
         if (albumId != null && onOpenAlbum != null) {
             DesktopMenuRow(Icons.Rounded.Album, DesktopStrings["open_album", "Open album"]) { onOpenAlbum(albumId) }
